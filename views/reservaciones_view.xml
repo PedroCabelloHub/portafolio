@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_hotel_reservation_form" model="ir.ui.view">
+        <field name="name">hotel.reservation.form</field>
+        <field name="model">hotel.reservation</field>
+        <field name="arch" type="xml">
+            <form string="Reservación">
+                <sheet>
+                <header>
+                        <field name="status" widget="statusbar"/>
+                </header>
+                    <group>
+                        <field name="guest_id"/>
+                        <field name="room_id"/>    
+                        <field name="precio_por_noche" readonly="1"/>
+                        <field name="check_in_date"/>
+                        <field name="check_out_date"/> 
+                        <field name="precio_total" />
+                        <button name="onchange_room_id" string="Crear Reservación" type="object" class="btn-primary" attrs="{'invisible': [('status', '=', 'occupied')]}"/>
+                        <button name="onchange_desocupar" string="Desocupar Habitación" type="object" class="btn-primary" attrs="{'invisible': [('status', '!=', 'occupied')]}"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_hotel_reservation_tree" model="ir.ui.view">
+        <field name="name">hotel.reservation.tree</field>
+        <field name="model">hotel.reservation</field>
+        <field name="arch" type="xml">
+            <tree string="Reservaciones">
+                <field name="guest_id"/>
+                <field name="room_id"/>
+                <field name="check_in_date"/>
+                <field name="check_out_date"/>        
+                <field name="precio_por_noche"/>
+                <field name="precio_total"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_hotel_reservations" model="ir.actions.act_window">
+        <field name="name">Reservaciones</field>
+        <field name="res_model">hotel.reservation</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<menuitem name="Hotel" id="hotel_menu" sequence="20" />
+		<menuitem name="Administracion" id="hotel_configuracion_menu" sequence="10" parent="hotel_menu" />
+			<menuitem name="Habitaciones" action="action_hotel_rooms"  id="hotel_habitaciones_menu" sequence="20" parent="hotel_configuracion_menu" />
+			<menuitem name="Huspedes" action="action_hotel_guests"  id="hotel_huspedes_menu" sequence="30" parent="hotel_configuracion_menu" />
+			<menuitem name="Reservaciones" action="action_hotel_reservations"  id="hotel_reservaciones_menu" sequence="40" parent="hotel_configuracion_menu" />
+	</data>
+</odoo>
