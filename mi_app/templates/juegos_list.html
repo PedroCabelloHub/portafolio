@@ -1,0 +1,40 @@
+{% extends './layouts/base.html' %}
+
+
+{% block content%}
+{% load static %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/list_player.css' %}">
+</head>
+ <h1>Lista de Partidos Programados</h1>
+ <a class="boton-crear" href="{% url 'crear_juego' %}">Crear Partido</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Folio</th>
+                <th>Fecha</th>
+                <th>Liga</th>
+                <th>Visitante</th>
+                <th>Local</th>
+                <th>Estadio</th>
+                <th>Arbitro</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for juego in juegos %}
+            <tr>
+                <td>{{ juego.folio }}</td>
+                <td>{{ juego.fecha }}</td>
+                <td><a href="{% url 'liga_detail' juego.liga_id.id %}">{{ juego.liga_id }}</a></td>
+                <td><a href="{% url 'equipo_detail' juego.equipo1.id %}">{{ juego.equipo1 }}</a></td>
+                <td><a href="{% url 'equipo_detail' juego.equipo2.id %}">{{ juego.equipo2 }}</a></td>
+                <td>{{ juego.estadio }}</td>
+                <td>{{ juego.arbitro }}</td>
+                <td>{{ juego.state }}</td>               
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends './layouts/base.html' %}
+
+
+{% block content%}
+{% load static %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/list_player.css' %}">
+</head>
+ <h1>Lista de Estadios</h1>
+    <a class="boton-crear" href="{% url 'crear_estadio' %}">Crear Estadios</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Liga</th>
+                <th>Foto</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for estadio in estadios %}
+            <tr>
+                <td>{{ estadio.name }}</td>
+                <td><a href="{% url 'liga_detail' estadio.liga_id.id %}">{{ estadio.liga_id }}</a></td>
+                <td><img src="{{ estadio.foto.url }}" alt="{{ estadio.name }} - Foto"></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

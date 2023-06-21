@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static '/styles/main.css' %}">
+    
+</head>
+<body>
+  <nav class="navbar">
+    <div class="dropdown">
+        <button class="dropbtn">Ligas</button>
+        <div class="dropdown-content">
+          <a href="{% url 'lista_jugadores' %}">Jugadores</a>
+          <a href="{% url 'lista_equipos' %}">Equipos</a>
+          <a href="{% url 'lista_directores' %}">Directores</a>
+          <a href="{% url 'lista_liga' %}">Ver Ligas</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Estadios</button>
+        <div class="dropdown-content">
+          <a href="{% url 'lista_juegos' %}">Juegos</a>
+          <a href="{% url 'lista_arbitros' %}">Arbitros</a>
+          <a href="{% url 'lista_estadios' %}">Ver Estadios</a>
+        </div>
+      </div> 
+    </nav>
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>

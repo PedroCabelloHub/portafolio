@@ -1,0 +1,33 @@
+{% extends './layouts/base.html' %}
+
+
+{% block content%}
+{% load static %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/list_player.css' %}">
+</head>
+ <h1>Lista de Jugadores</h1>
+ <a class="boton-crear" href="{% url 'crear_jugador' %}">Crear Jugador</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Posición</th>
+                <th>Número de Jugador</th>
+                <th>Foto</th>
+                <th>Equipo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for jugador in jugadores %}
+            <tr>
+                <td>{{ jugador.name }}</td>
+                <td>{{ jugador.get_posicion_display }}</td>
+                <td>{{ jugador.num_player }}</td>
+                <td><img src="{{ jugador.foto.url }}" alt="{{ jugador.name }} - Foto"></td>
+                <td><a href="{% url 'equipo_detail' jugador.equipo_id.id %}">{{ jugador.equipo_id }}</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
